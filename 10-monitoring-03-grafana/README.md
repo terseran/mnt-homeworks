@@ -26,6 +26,11 @@
 1. Подключите поднятый вами prometheus, как источник данных.
 1. Решение домашнего задания — скриншот веб-интерфейса grafana со списком подключенных Datasource.
 
+### Ответ
+
+<img width="2176" height="585" alt="image" src="https://github.com/user-attachments/assets/070752d7-afea-4d26-b3df-32ed5f73b8ae" />
+
+
 ## Задание 2
 
 Изучите самостоятельно ресурсы:
@@ -43,10 +48,41 @@
 
 Для решения этого задания приведите promql-запросы для выдачи этих метрик, а также скриншот получившейся Dashboard.
 
+### Ответ
+
+#### утилизация CPU для nodeexporter (в процентах, 100-idle)
+```  
+100 - (avg by (instance) (rate(node_cpu_seconds_total{mode="idle"}[1m])) * 100)
+```
+
+#### CPULA 1/5/15
+```
+node_load1
+node_load5
+node_load15
+```
+
+#### количество свободной оперативной памяти
+```
+node_memory_MemAvailable_bytes
+```
+
+#### количество места на файловой системе
+```
+node_filesystem_free_bytes{fstype="ext4"}
+```
+
+<img width="2555" height="873" alt="image" src="https://github.com/user-attachments/assets/0855e814-3f31-4ef2-8a6a-b6d911fcb129" />
+
 ## Задание 3
 
 1. Создайте для каждой Dashboard подходящее правило alert — можно обратиться к первой лекции в блоке «Мониторинг».
 1. В качестве решения задания приведите скриншот вашей итоговой Dashboard.
+
+### Ответ
+
+<img width="2560" height="845" alt="image" src="https://github.com/user-attachments/assets/564512fa-32e4-44c6-96be-0f2346634a60" />
+
 
 ## Задание 4
 
